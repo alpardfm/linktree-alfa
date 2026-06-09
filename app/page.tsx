@@ -1,65 +1,134 @@
-import Image from "next/image";
+import { Logo3D } from "./logo-3d";
+import { TiltCard } from "./tilt-card";
+import { DiscordButton } from "./discord-button";
+import { DotGrid } from "./dot-grid";
+import { AnimatedSection } from "./animated-section";
+
+const devLinks = [
+  {
+    label: "Tech Product",
+    href: "https://fmard-web.vercel.app/",
+    icon: "🚀",
+  },
+  {
+    label: "GitHub",
+    href: "https://github.com/alpardfm",
+    icon: "💻",
+  },
+];
+
+const socialLinks = [
+  {
+    label: "Instagram",
+    href: "https://www.instagram.com/mochalfaryandani/",
+    icon: "📸",
+  },
+  {
+    label: "LinkedIn",
+    href: "https://www.linkedin.com/in/ferdian-moch-alfa-ryandani-928b00235/",
+    icon: "💼",
+  },
+];
+
+const supportLinks = [
+  {
+    label: "Saweria",
+    href: "https://saweria.co/alpardfms",
+    icon: "☕",
+  },
+];
 
 export default function Home() {
   return (
-    <div className="flex flex-col flex-1 items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex flex-1 w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-            To get started, edit the page.tsx file.
-          </h1>
-          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Learning
-            </a>{" "}
-            center.
-          </p>
-        </div>
-        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
-          <a
-            className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={16}
-            />
-            Deploy Now
-          </a>
-          <a
-            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
+    <>
+      <div className="bg-animated" />
+      <DotGrid />
+      <main style={{ minHeight: "100vh", display: "flex", alignItems: "center", justifyContent: "center", padding: "64px 24px", position: "relative", zIndex: 1 }}>
+        <div style={{ width: "100%", maxWidth: "380px", display: "flex", flexDirection: "column", alignItems: "center", gap: "40px" }}>
+          {/* Avatar 3D */}
+          <Logo3D />
+
+          {/* Name & Tagline */}
+          <AnimatedSection delay={0.2}>
+            <div style={{ textAlign: "center" }}>
+              <h1 style={{ fontSize: "28px", fontWeight: 700, color: "#e6edf3", letterSpacing: "-0.02em" }}>Alfa</h1>
+              <p style={{ marginTop: "8px", fontSize: "14px", color: "#8b949e", fontStyle: "italic" }}>
+                &ldquo;make it simple but significant&rdquo;
+              </p>
+            </div>
+          </AnimatedSection>
+
+          {/* Dev Section */}
+          <div style={{ width: "100%" }}>
+            <AnimatedSection delay={0.3}>
+              <p className="section-label">Main</p>
+            </AnimatedSection>
+            <div style={{ display: "flex", flexDirection: "column", gap: "12px" }}>
+              <TiltCard href="https://alpardfm.my.id" delay={0.35}>
+                <span className="icon">🏠</span>
+                <span>Main Profile</span>
+                <span className="arrow">→</span>
+              </TiltCard>
+            </div>
+          </div>
+
+          {/* Dev Section */}
+          <div style={{ width: "100%" }}>
+            <AnimatedSection delay={0.4}>
+              <p className="section-label">Dev</p>
+            </AnimatedSection>
+            <div style={{ display: "flex", flexDirection: "column", gap: "12px" }}>
+              {devLinks.map((link, i) => (
+                <TiltCard key={link.label} href={link.href} delay={0.5 + i * 0.1}>
+                  <span className="icon">{link.icon}</span>
+                  <span>{link.label}</span>
+                  <span className="arrow">→</span>
+                </TiltCard>
+              ))}
+            </div>
+          </div>
+
+          {/* Social Section */}
+          <div style={{ width: "100%" }}>
+            <AnimatedSection delay={0.6}>
+              <p className="section-label">Social</p>
+            </AnimatedSection>
+            <div style={{ display: "flex", flexDirection: "column", gap: "12px" }}>
+              {socialLinks.map((link, i) => (
+                <TiltCard key={link.label} href={link.href} delay={0.7 + i * 0.1}>
+                  <span className="icon">{link.icon}</span>
+                  <span>{link.label}</span>
+                  <span className="arrow">→</span>
+                </TiltCard>
+              ))}
+              <DiscordButton delay={0.9} />
+            </div>
+          </div>
+
+          {/* Support Section */}
+          <div style={{ width: "100%" }}>
+            <AnimatedSection delay={1.0}>
+              <p className="section-label">Support</p>
+            </AnimatedSection>
+            <div style={{ display: "flex", flexDirection: "column", gap: "12px" }}>
+              {supportLinks.map((link, i) => (
+                <TiltCard key={link.label} href={link.href} delay={1.1 + i * 0.1}>
+                  <span className="icon">{link.icon}</span>
+                  <span>{link.label}</span>
+                  <span className="arrow">→</span>
+                </TiltCard>
+              ))}
+            </div>
+          </div>
+
+          {/* Footer */}
+          <AnimatedSection delay={1.3}>
+            <p style={{ fontSize: "11px", color: "#30363d", marginTop: "16px" }}>
+              © 2025 Alfa
+            </p>
+          </AnimatedSection>
         </div>
       </main>
-    </div>
+    </>
   );
 }
